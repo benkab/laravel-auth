@@ -1,0 +1,26 @@
+.navbar{
+    border-radius: 0px !important;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 90px;
+}
+
+.navbar .navbar-brand{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.navbar a{
+    color: #444343 !important;
+    cursor: pointer !important;
+    outline: none;
+}
+
+.navbar ul li a{
+    font-size: 13px;
+    padding-right: 0px !important;
+}
+
+.navbar ul li a:hover{
+    color: #000000 !important;
+}

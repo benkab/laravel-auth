@@ -1,0 +1,13 @@
+body{
+    font-family: 'Cabin', sans-serif;
+    background: #F4F6F7;
+    color: #444343;
+    padding: 0px !important;
+    margin: 0px !important;
+}
+
+.alert{
+    padding-left: 15px !important;
+    padding-right: 15px !important;    
+    border-radius: 0px !important;
+}
