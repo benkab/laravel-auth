@@ -89,4 +89,32 @@ class UserController extends Controller
         Notify::info('You have been successfully logged out.');
         return redirect()->route('signin');
     }
+
+    public function getRetrievePassword()
+    {
+        return view('auth.forgotpassword');
+    }
+
+    public function postRetrievePassword(Request $request)
+    {
+
+        $email      = $request['email'];
+
+        // Validation
+        $this->validate($request, [
+            'email'             => 'required | email'
+        ]);
+
+        // Verify if email exists
+        $user   = User::where('email', '=', $email)->first();
+        if($user)
+        {
+            dd('all good');
+        }
+        else{
+            Notify::error('There is not an account registered with the provided email');
+            return redirect()->back();
+        }
+
+    }
 }

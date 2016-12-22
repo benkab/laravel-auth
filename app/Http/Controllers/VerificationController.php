@@ -83,10 +83,10 @@ class VerificationController extends Controller
     {
 
         // Retrieve user 
-        $user = Auth::user();
+        $user    = Auth::user();
 
         // Generate the token
-        $token           = Str::random(64);
+        $token   = Str::random(64);
 
         // Update the user's verification token
         Auth::user()->update([
@@ -94,10 +94,9 @@ class VerificationController extends Controller
         ]);
 
         // Sending the email
-        Mail::send('emails.verification', ['user' =>  $user], function ($m) use ($user) {
-            $m->from('no-reply@auth.com', 'AUTH');
-
-            $m->to($user->email, $user->firstname)->subject('AUTH Account verification');
+        Mail::send('emails.verification', ['user' =>  $user], function ($message) use ($user) {
+            $message->from('no-reply@auth.com', 'AUTH');
+            $message->to($user->email, $user->firstname)->subject('Account verification');
         });
 
         Notify::success('Your activation email has been successfully sent to ' . $user->email);
@@ -106,6 +105,35 @@ class VerificationController extends Controller
 
     public function getVerificationToken($token)
     {
-        dd($token);
+        // Check if user is already verified
+        if(Auth::user()->verified){
+            Notify::info('Your account is already verified');
+            return redirect()->route('home');
+        }
+
+            // Verify the token 
+
+            // User's token
+            $user_token  = Auth::user()->token;
+
+            // Compare the codes
+            $value = str_is($token, $user_token);
+
+            if($value){
+                
+                // Update the user's verification code
+                Auth::user()->update([
+                    'verified' => true
+                ]);
+
+                Notify::success('Your account has been successfully verified');
+                return redirect()->route('home');
+              
+            }
+            else{
+                Notify::error('The token provided is not correct');
+                return redirect()->route('home');
+            }
+
     }
 }

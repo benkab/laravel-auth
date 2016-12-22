@@ -9,10 +9,11 @@
     border: none;
     box-shadow: none !important;
     padding-left: 0px !important;
-    font-size: 13px;
+    font-size: 16px !important;
     border-bottom: 1px solid #DBDCDD;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
     margin-bottom: 20px;
+    height: 40px;
 }
 
 
@@ -23,13 +24,16 @@
 .auth .panel button{
     border-radius: 0px;
     margin-top: 25px !important;
+    font-size: 14px !important;
 }
 
 
 .auth .auth-title{
     padding-top: 0px !important;
     padding-bottom: 0px !important;
-    background: #F8F9F9 !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 16px !important;
 }
 
 .auth .auth-title .panel-body{
@@ -41,3 +45,10 @@
     border-bottom: 1px solid #D54C3E !important;
 }
 
+.auth .submit-login{
+    margin-top: 15px !important;
+}
+
+.auth .recover-password-label{
+    margin-bottom: 20px !important;
+}

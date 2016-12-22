@@ -15,7 +15,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 @if(Auth::check())
-                    <li><a>{{Auth::user()->firstname}} {{Auth::user()->lastname}}</a></li>
+                    <li><a href="{{ route('profile') }}">{{Auth::user()->firstname}} {{Auth::user()->lastname}}</a></li>
                     <li><a class="logout" href="{{ route('logout') }}">Log out</a></li>
                 @else
                     @if(Route::currentRouteName() != "signin")

@@ -1,5 +1,5 @@
-<p>Hi {{Auth::user()->firstname}}</p>
+<p>Hi {{Auth::user()->firstname}},</p>
 <br>
-<p>Please activate your account by clicking on this : <a href="/verification/token/{{Auth::user()->token}}">link</a></p>
+<p>Please activate your account by clicking on this : <a href="{{ URL::to('/verification/token/' . Auth::user()->token) }}" target="_blank">Activate the account</a></p>
 <br>
 <p>AUTH Team</p>

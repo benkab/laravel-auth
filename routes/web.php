@@ -46,22 +46,43 @@ Route::get('/', [
         'as' => 'logout'
     ]);
 
+    Route::get('/forgot/password', [
+        'uses' => 'UserController@getRetrievePassword',
+        'as' => 'forgot.password'
+    ]);
+
+    Route::post('/forgot/password', [
+        'uses' => 'UserController@postRetrievePassword',
+        'as' => 'post.forgot.password'
+    ]);
+    
 // Verification
-Route::get('/verifcation/code', [
+Route::get('/verification/code', [
     'uses' => 'VerificationController@getSendVerificationCode',
     'as' => 'send.code'
 ])->middleware('auth');
 
-Route::post('/verifcation/code', [
+Route::post('/verification/code', [
     'uses' => 'VerificationController@postSendVerificationCode',
     'as' => 'verify.code'
 ])->middleware('auth');
 
-Route::get('/verifcation/email', [
+Route::get('/verification/email', [
     'uses' => 'VerificationController@postSendVerificationEmail',
     'as' => 'verify.email'
 ])->middleware('auth');
 
-Route::get('/verifcation/token/{token}', [
+Route::get('/verification/token/{token}', [
     'uses' => 'VerificationController@getVerificationToken'
 ])->middleware('auth');
+
+    // Profile
+    Route::get('/profile', [
+        'uses' => 'ProfileController@getProfile',
+        'as' => 'profile'
+    ])->middleware('auth');
+
+    Route::post('/profile', [
+        'uses' => 'ProfileController@postUpdateProfile',
+        'as' => 'profile.update'
+    ])->middleware('auth');
